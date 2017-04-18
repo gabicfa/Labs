@@ -34,8 +34,8 @@ float avg_luma(image_t *img) {
 }
 
 void better_rotate_image(image_t *src, image_t *dest) {
-  long i, j, i1, j1;
-  long lado = src->nrows;
+  int i, j, i1, j1;
+  int lado = src->nrows;
 
   for (i = 0; i < lado; i+=BLOCK_SIZE) {
     for (j = 0; j < lado; j+=BLOCK_SIZE) {
@@ -50,10 +50,12 @@ void better_rotate_image(image_t *src, image_t *dest) {
 }
 
 float better_avg_luma(image_t *img) {
-  long i, j;
-  double luma =0.0;
+  int i, j;
   pixel_t pix;
-  long lado = img->nrows;
+
+  double luma = 0.0;
+  int lado = img->nrows;
+
   for (i = 0; i < lado; i++) {
     for (j = 0; j < lado; j++) {
           pix = img->data[i*lado+j];
@@ -62,8 +64,8 @@ float better_avg_luma(image_t *img) {
                   0.114 * (pix.c[2]);
     }
   }
+   
+  luma /= (lado*lado);
 
-  (float) (luma /= (lado*lado));
-
-  return luma;
+  return (float) luma;
 }
