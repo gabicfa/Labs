@@ -1,7 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -O3 -funroll-loops
-LIBS =  -L. -lperflab -lm
-#-lrt
+LIBS =  -L. -lperflab -lm -lrt
 TARGETS = libperflab.a driver
 
 LIBPERFLAB_OBJS = pix.o image.o image_io.o tictoc.o

@@ -31,9 +31,9 @@ void reset_image(image_t *img) {
 
 void test_rotate(void) {
   printf("\n");
-  // printf("=================\n");
+  printf("=================\n");
   printf("Test rotate image\n");
-  // printf("=================\n\n");
+  printf("=================\n\n");
 
   /* Make the original image. */
   /*image_t *orig_image = make_test_image(IMG_SIZE, IMG_SIZE);*/
@@ -51,7 +51,7 @@ void test_rotate(void) {
   int i;
   tictoc_t clock;
 
-  // printf("Init baseline timing.\n");
+  printf("Init baseline timing.\n");
 
   /* Measure performance of rotate_image. */
   reset(&clock);
@@ -67,7 +67,7 @@ void test_rotate(void) {
   reset_image(dest_image);
   better_rotate_image(orig_image, dest_image);
 
-  // printf("Init improved rotate timing.\n");
+  printf("Init improved rotate timing.\n");
 
   /* Measure performance of better_rotate_image. */
   reset(&clock);
@@ -92,9 +92,9 @@ void test_rotate(void) {
 
 void test_color(void) {
   printf("\n");
-  // printf("==========\n");
+  printf("==========\n");
   printf("Test color\n");
-  // printf("==========\n\n");
+  printf("==========\n\n");
 
   /* Make the original image. */
   /*image_t *orig_image = make_test_image(IMG_SIZE, IMG_SIZE);*/
@@ -102,13 +102,13 @@ void test_color(void) {
 
   /* Apply the avg_color function to save the benchmark color. */
   float correct_avg_luma = avg_luma(orig_image);
-  // printf("Average luma: %f\n", correct_avg_luma);
+  printf("Average luma: %f\n", correct_avg_luma);
 
   /* Measure performance of avg_color. */
   int i;
   tictoc_t clock;
 
-  // printf("Init baseline timing.\n");
+  printf("Init baseline timing.\n");
 
   /* Run avg_color once to warm-up the cache */
   float dest_luma = avg_luma(orig_image);
@@ -122,11 +122,11 @@ void test_color(void) {
   double clock1 =  get_time_usec(&clock) / NRUNS_AVG;
   printf("avg_luma: %lf usec.\n", get_time_usec(&clock) / NRUNS_AVG);
 
-  // printf("Init better_avg_luma timing.\n");
+  printf("Init better_avg_luma timing.\n");
 
   /* Run better_avg_color once to warm-up the cache */
   dest_luma = better_avg_luma(orig_image);
-  // printf("Average luma from better_avg_luma: %f\n", dest_luma);
+  printf("Average luma from better_avg_luma: %f\n", dest_luma);
 
   reset(&clock);
   tic(&clock);
